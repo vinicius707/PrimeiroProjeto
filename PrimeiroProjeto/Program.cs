@@ -1,5 +1,6 @@
 ﻿// Screen Sound
 string msg = "Boas vindas ao Screen Sound";
+List<string> bandList = new List<string> { "BABYMETAL", "FUGAZI" };
 
 void showLogo()
 {
@@ -34,7 +35,7 @@ void ShowMenuOptions()
             BandRegister();
             break;
         case 2:
-            Console.WriteLine("Você escolheu a opção " + choosenNumber);
+            showRegisteredBands();
             break;
         case 3:
             Console.WriteLine("Você escolheu a opção " + choosenNumber);
@@ -57,11 +58,25 @@ void BandRegister()
     Console.WriteLine("Registro de bandas");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string bandName = Console.ReadLine()!;
-    Console.WriteLine($"A banda {bandName} foi registrada com sucesso");
+    Console.WriteLine($"A banda {bandName} foi registrada com sucesso\n");
+    bandList.Add(bandName);
     Thread.Sleep(2000);
     Console.Clear();
     ShowMenuOptions();
 }
 
+void showRegisteredBands()
+{
+    Console.Clear();
+    Console.WriteLine("Exibindo bandas registradas");
+    for (int i = 0; i < bandList.Count; i++)
+    {
+        Console.WriteLine($"Banda: {bandList[i]}");
+    }
+    Console.WriteLine("\nDigite algo para voltar ao menu principal\n");
+    Console.ReadKey();
+    Console.Clear();
+    ShowMenuOptions();
+}
 
 ShowMenuOptions();
